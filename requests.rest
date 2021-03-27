@@ -1,0 +1,43 @@
+GET http://localhost:3000/transfers
+
+###
+
+GET http://localhost:3000/transfers/604e7485a99562a0e1b82b4c
+
+###
+
+POST http://localhost:3000/transfers
+Content-Type: application/json
+
+{
+  "createdOn": "2021-03-15T06:00:57.318Z",
+  "modifiedOn": "2021-03-15T06:00:57.318Z",
+  "concept": "Rent 1",
+  "commission": 10,
+  "operationDate": 1615787327121,
+  "ammount": 1,
+  "destination": "604e5b885999529d63475b90",
+  "source": "604e61b193af809df771af75"
+}
+
+###
+
+GET http://localhost:3000/accounts/604e61b193af809df771af75/transfers
+
+###
+
+PATCH http://localhost:3000/transfers/604e7485a99562a0e1b82b4c
+Content-Type: application/json
+
+{
+  "concept": "other concept",
+  "commission": 10,
+  "operationDate": 1615787327122,
+  "ammount": 999,
+  "destination": "604e5b885999529d63475b90",
+  "source": "604e61b193af809df771af75"
+}
+
+###
+
+DELETE http://localhost:3000/transfers/604e7485a99562a0e1b82b4c
