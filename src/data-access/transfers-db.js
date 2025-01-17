@@ -1,6 +1,5 @@
-import Id from '../Id'
+import Id from '../Id/index.js'
 
-import { ObjectId } from 'mongodb';
 export default function makeTransfersDb ({ makeDb }) {
   return Object.freeze({
     findAll,
@@ -39,8 +38,8 @@ export default function makeTransfersDb ({ makeDb }) {
   }
   async function insert ({ id: _id = Id.makeId(), ...transferInfo }) {
     const db = await makeDb()
-    const result = await db.collection('transfers').insertOne({  _id, ...transferInfo })
-    const { _id: id, ...insertedInfo } = result.ops[0]
+    const result = await db.collection('transfers').insertOne({ _id, ...transferInfo })
+    const { _id: id, ...insertedInfo } = result
     return { id, ...insertedInfo }
   }
   async function update ({ id: _id, ...transferInfo }) {

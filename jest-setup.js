@@ -12,7 +12,7 @@ const mongod =
     autoStart: false
   })
 
-module.exports = async () => {
+export default async () => {
   if (!mongod.runningInstance) {
     await mongod.start()
   }

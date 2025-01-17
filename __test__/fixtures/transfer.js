@@ -6,7 +6,7 @@ const Id = Object.freeze({
   isValidId: cuid.isCuid
 })
 
-export default function makeFakeTransfer(overrides) {
+export default function makeFakeTransfer (overrides) {
   const transfer = {
     id: Id.makeId(),
     createdOn: Date.now(),

@@ -1,11 +1,9 @@
+import { describe, it, expect, beforeAll, afterAll } from '@jest/globals'
 import axios from 'axios'
-import transfersDb, { makeDb } from '../src/data-access'
-import makeFakeTransfer from './fixtures/transfer'
-import dotenv from 'dotenv'
-dotenv.config()
+import transfersDb, { makeDb } from '../src/data-access/index.js'
+import makeFakeTransfer from './fixtures/transfer.js'
 
 describe('Transfers API', () => {
-
   beforeAll(() => {
     axios.defaults.baseURL = process.env.DM_BASE_URL
     axios.defaults.headers.common['Content-Type'] = 'application/json'
@@ -32,6 +30,7 @@ describe('Transfers API', () => {
       expect(doc).toEqual(posted)
       return transfersDb.remove(posted)
     })
+
     it('requires transfer to contain an createdOn Date', async () => {
       const response = await axios.post(
         '/transfers',
@@ -40,6 +39,7 @@ describe('Transfers API', () => {
       expect(response.status).toBe(400)
       expect(response.data.error).toBeDefined()
     })
+
     it('requires transfer to contain an modifiedOn Date', async () => {
       const response = await axios.post(
         '/transfers',
@@ -48,6 +48,7 @@ describe('Transfers API', () => {
       expect(response.status).toBe(400)
       expect(response.data.error).toBeDefined()
     })
+
     it('requires transfer to contain a commission', async () => {
       const response = await axios.post(
         '/transfers',
@@ -56,6 +57,7 @@ describe('Transfers API', () => {
       expect(response.status).toBe(400)
       expect(response.data.error).toBeDefined()
     })
+
     it('requires transfer to contain a operationDate', async () => {
       const response = await axios.post(
         '/transfers',
@@ -64,6 +66,7 @@ describe('Transfers API', () => {
       expect(response.status).toBe(400)
       expect(response.data.error).toBeDefined()
     })
+
     it('requires transfer to contain an ammount', async () => {
       const response = await axios.post(
         '/transfers',
@@ -72,6 +75,7 @@ describe('Transfers API', () => {
       expect(response.status).toBe(400)
       expect(response.data.error).toBeDefined()
     })
+
     it('requires transfer to contain a source', async () => {
       const response = await axios.post(
         '/transfers',
@@ -80,6 +84,7 @@ describe('Transfers API', () => {
       expect(response.status).toBe(400)
       expect(response.data.error).toBeDefined()
     })
+
     it('requires transfer to contain a destination', async () => {
       const response = await axios.post(
         '/transfers',
@@ -89,6 +94,7 @@ describe('Transfers API', () => {
       expect(response.data.error).toBeDefined()
     })
   })
+
   describe('modfying transfers', () => {
     it('modifies a transfer', async () => {
       const transfer = makeFakeTransfer({
@@ -101,6 +107,7 @@ describe('Transfers API', () => {
       return transfersDb.remove(transfer)
     })
   })
+
   describe('deleting transfers', () => {
     it('deletes', async () => {
       const transfer = makeFakeTransfer()

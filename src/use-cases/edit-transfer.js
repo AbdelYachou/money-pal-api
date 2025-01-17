@@ -1,5 +1,4 @@
-
-import makeTransfer from '../transfer'
+import makeTransfer from '../transfer/index.js'
 
 export default function makeEditTransfer ({ transfersDb }) {
   return async function editTransfer ({ id, ...changes } = {}) {

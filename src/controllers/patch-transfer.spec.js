@@ -1,5 +1,6 @@
-import makePatchTransfer from './patch-transfer'
-import makeFakeTransfer from '../../__test__/fixtures/transfer'
+import { describe, it, expect } from '@jest/globals'
+import makePatchTransfer from './patch-transfer.js'
+import makeFakeTransfer from '../../__test__/fixtures/transfer.js'
 
 describe('patch transfer controller', () => {
   it('Should successfully patches a transfer', async () => {
@@ -25,6 +26,7 @@ describe('patch transfer controller', () => {
     const actual = await patchTransfer(request)
     expect(actual).toEqual(expected)
   })
+
   it('Should reports user errors', async () => {
     const fakeTransfer = makeFakeTransfer()
     const patchTransfer = makePatchTransfer({

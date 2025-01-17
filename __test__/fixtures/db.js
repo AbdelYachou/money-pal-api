@@ -1,5 +1,4 @@
-import mongodb from 'mongodb'
-const MongoClient = mongodb.MongoClient
+import { MongoClient } from 'mongodb'
 
 let connection, db
 

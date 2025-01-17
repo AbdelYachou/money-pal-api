@@ -1,6 +1,7 @@
-import makeDb from '../../__test__/fixtures/db'
-import makeTransfersDb from './transfers-db'
-import makeFakeTransfer from '../../__test__/fixtures/transfer'
+import { describe, it, expect, beforeEach } from '@jest/globals'
+import makeDb from '../../__test__/fixtures/db.js'
+import makeTransfersDb from './transfers-db.js'
+import makeFakeTransfer from '../../__test__/fixtures/transfer.js'
 
 describe('transfers db', () => {
   let transfersDb

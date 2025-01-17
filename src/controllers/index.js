@@ -5,14 +5,14 @@ import {
   listTransferById,
   listTransfersByAccount,
   removeTransfer
-} from '../use-cases'
-import makeDeleteTransfer from './delete-transfer'
-import makeGetTransfers from './get-transfers'
-import makeGetTransferById from './get-transfer-by-id'
-import makeGetTransfersByAccount from './get-transfers-by-account'
-import makePostTransfer from './post-transfer'
-import makePatchTransfer from './patch-transfer'
-import notFound from './not-found'
+} from '../use-cases/index.js'
+import makeDeleteTransfer from './delete-transfer.js'
+import makeGetTransfers from './get-transfers.js'
+import makeGetTransferById from './get-transfer-by-id.js'
+import makeGetTransfersByAccount from './get-transfers-by-account.js'
+import makePostTransfer from './post-transfer.js'
+import makePatchTransfer from './patch-transfer.js'
+import notFound from './not-found.js'
 
 const deleteTransfer = makeDeleteTransfer({ removeTransfer })
 const getTransfers = makeGetTransfers({ listTransfers })

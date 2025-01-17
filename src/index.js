@@ -1,6 +1,4 @@
-import express from 'express'
-import bodyParser from 'body-parser'
-import dotenv from 'dotenv'
+import express, { json } from 'express'
 
 import {
   deleteTransfer,
@@ -10,14 +8,12 @@ import {
   notFound,
   postTransfer,
   patchTransfer
-} from './controllers'
-import makeCallback from './express-callback'
-
-dotenv.config()
+} from './controllers/index.js'
+import makeCallback from './express-callback/index.js'
 
 const apiRoot = ''
 const app = express()
-app.use(bodyParser.json())
+app.use(json())
 
 app.post(`${apiRoot}/transfers`, makeCallback(postTransfer))
 app.delete(`${apiRoot}/transfers/:id`, makeCallback(deleteTransfer))

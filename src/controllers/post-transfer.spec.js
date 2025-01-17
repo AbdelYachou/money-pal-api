@@ -1,5 +1,6 @@
-import makePostTransfer from './post-transfer'
-import makeFakeTransfer from '../../__test__/fixtures/transfer'
+import { describe, it, expect } from '@jest/globals'
+import makePostTransfer from './post-transfer.js'
+import makeFakeTransfer from '../../__test__/fixtures/transfer.js'
 
 describe('post transfer controller', () => {
   it('successfully posts a transfer', async () => {
@@ -22,6 +23,7 @@ describe('post transfer controller', () => {
     const actual = await postTransfer(request)
     expect(actual).toEqual(expected)
   })
+
   it('reports user errors', async () => {
     const postTransfer = makePostTransfer({
       addTransfer: () => {

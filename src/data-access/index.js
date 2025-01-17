@@ -1,15 +1,24 @@
-import makeTransfersDb from './transfers-db'
-import mongodb from 'mongodb'
+import makeTransfersDb from './transfers-db.js'
+import { MongoClient, ServerApiVersion } from 'mongodb'
 
-const MongoClient = mongodb.MongoClient
 const url = process.env.DM_TRANSFERS_DB_URL
 const dbName = process.env.DM_TRANSFERS_DB_NAME
-const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true })
+console.log('connecting to ...', url)
+const client = new MongoClient(url, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true
+  }
+})
 
 export async function makeDb () {
-  if (!client.isConnected()) {
+  try {
     await client.connect()
+  } catch (err) {
+    console.log('Unnable to establish db connection', err)
   }
+
   return client.db(dbName)
 }
 

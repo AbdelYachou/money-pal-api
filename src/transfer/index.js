@@ -1,5 +1,5 @@
-import buildMakeTransfer from './transfer'
-import Id from '../Id'
+import buildMakeTransfer from './transfer.js'
+import Id from '../Id/index.js'
 
 const makeTransfer = buildMakeTransfer(Id)
 
