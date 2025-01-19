@@ -1,8 +1,10 @@
-const path = require('path')
+import path, { dirname } from 'node:path'
+import fs from 'node:fs'
+import { fileURLToPath } from 'url'
+import { MongoMemoryServer } from 'mongodb-memory-server'
 
-const fs = require('fs')
-
-const { MongoMemoryServer } = require('mongodb-memory-server')
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 const globalConfigPath = path.join(__dirname, 'globalConfigMongo.json')
 

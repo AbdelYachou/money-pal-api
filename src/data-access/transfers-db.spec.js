@@ -11,11 +11,8 @@ describe('transfers db', () => {
   })
 
   it('lists transfers', async () => {
-    const inserts = await Promise.all(
-      [makeFakeTransfer(), makeFakeTransfer(), makeFakeTransfer()].map(
-        transfersDb.insert
-      )
-    )
+    const inserts = [makeFakeTransfer(), makeFakeTransfer(), makeFakeTransfer()]
+    await Promise.all(inserts.map(transfersDb.insert))
     const found = await transfersDb.findAll()
     expect.assertions(inserts.length)
     return inserts.forEach(insert => expect(found).toContainEqual(insert))
@@ -23,7 +20,8 @@ describe('transfers db', () => {
 
   it('inserts a transfer', async () => {
     const transfer = makeFakeTransfer()
-    const result = await transfersDb.insert(transfer)
+    await transfersDb.insert(transfer)
+    const result = await transfersDb.findById(transfer)
     return expect(result).toEqual(transfer)
   })
 

@@ -44,3 +44,9 @@ To run only e2e tests:
 ```bash
 npm run test:e2e
 ```
+
+#### 6. Run the StandardJS linter
+To run linter:
+```bash
+npm run lint
+```
